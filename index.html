@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinel — Password Strength & Breach Auditor</title>
+<meta name="description" content="Check password strength and see if it has appeared in a known data breach, without ever sending your password anywhere.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">◈</span>
+      <span class="brand-name">Sentinel</span>
+    </div>
+    <p class="tagline">Test a password's real strength, and check whether it has already leaked — without it ever leaving your browser.</p>
+  </header>
+
+  <main class="panel" id="panel">
+    <label for="pw" class="field-label">Enter a password to test</label>
+    <div class="input-row">
+      <input type="password" id="pw" placeholder="Type a password…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <button id="toggle" type="button" aria-pressed="false">show</button>
+    </div>
+
+    <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="meterLabel">
+      <div class="meter-fill" id="meterFill"></div>
+    </div>
+    <div class="meter-label" id="meterLabel">Waiting for input</div>
+
+    <div class="metrics" id="metrics">
+      <div class="metric">
+        <span class="metric-value" id="mLength">0</span>
+        <span class="metric-label">characters</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value" id="mEntropy">0</span>
+        <span class="metric-label">bits of entropy</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value" id="mCrack">—</span>
+        <span class="metric-label">est. crack time</span>
+      </div>
+    </div>
+
+    <ul class="checklist" id="checklist">
+      <li class="check-item" data-check="length"><span class="check-mark" aria-hidden="true"></span>8+ characters</li>
+      <li class="check-item" data-check="upper"><span class="check-mark" aria-hidden="true"></span>Uppercase letter</li>
+      <li class="check-item" data-check="lower"><span class="check-mark" aria-hidden="true"></span>Lowercase letter</li>
+      <li class="check-item" data-check="number"><span class="check-mark" aria-hidden="true"></span>Number</li>
+      <li class="check-item" data-check="symbol"><span class="check-mark" aria-hidden="true"></span>Symbol</li>
+    </ul>
+
+    <button id="breachBtn" class="breach-btn" disabled type="button">Check if this password has leaked</button>
+    <div id="breachResult" class="breach-result" role="status" aria-live="polite"></div>
+  </main>
+
+  <section class="privacy">
+    <h2>How the breach check stays private</h2>
+    <p>Your password is hashed with SHA-1 <em>inside your browser</em>. Only the first 5 characters of that hash are sent to the Have I Been Pwned API — never the password, and never the full hash. The API returns every hash suffix that starts with those 5 characters, and the match happens locally on your machine. This is called <strong>k-anonymity</strong>, and it's the same pattern real breach-monitoring tools use in production.</p>
+  </section>
+
+  <footer class="site-footer">
+    <p>Open source on <a href="#" id="repoLink">GitHub</a> · Built with HTML, CSS and JS — no frameworks, no backend.</p>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
