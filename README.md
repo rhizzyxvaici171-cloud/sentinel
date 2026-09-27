@@ -2,7 +2,7 @@
 
 A small, framework-free web app that scores password strength in real time and checks whether a password has appeared in a known data breach — **without ever sending the password anywhere.**
 
-**[Live demo](https://github.com/rhizzyxvaici171-cloud/sentinel)** 
+**[Live demo](https://rhizzyxvaici171-cloud.github.io/sentinel/)** 
 
 ## What it does
 
