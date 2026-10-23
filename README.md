@@ -54,12 +54,6 @@ sentinel/
 └── LICENSE
 ```
 
-## Possible extensions
-
-- Add a `zxcvbn`-style dictionary/pattern check for more realistic strength scoring
-- Add a "generate a strong password" button
-- Add dark/light theme toggle
-- Turn the crack-time model into a configurable attacker-speed selector (offline GPU vs. online rate-limited)
 
 ## License
 
